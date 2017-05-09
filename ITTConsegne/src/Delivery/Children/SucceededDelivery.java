@@ -17,27 +17,11 @@ public class SucceededDelivery extends Delivery {
 
 
     private String sign;
-    private Recipient r;
-
-    public SucceededDelivery(LocalDate date, String note, String sign,Recipient r){
+    
+    public SucceededDelivery(LocalDate date, String note, String sign){
         super(date,note);
         this.setSign(sign);
-        setRecipient(r);
     }
-
-    public Recipient getRecipient() {
-        return r;
-    }
-
-    public boolean setRecipient(Recipient r) {
-        if (r!=null){
-            this.r = r;
-            return true;
-        }
-        else return false;
-    }
-    
-    
     
     public boolean setSign(String sign){
         if ((sign!=null)&& (!sign.isEmpty())){
@@ -53,7 +37,7 @@ public class SucceededDelivery extends Delivery {
     
     @Override
     public String toString() {
-        return   "\t" + "\t"+ "SUCCEEDED DELIVERY" + "\n" + "\t" + r.toString() + "\n" + "\t" + "Sign: " + sign + "\n" + "\t" + "Date: " + super.getLocalDate() + "\n" + "\t" + "Note: "  + super.getNote();
+        return   "\t" + "\t"+ "SUCCEEDED DELIVERY" + "\n" + "\t" + "Sign: " + sign + "\n" + "\t" + "Date: " + super.getLocalDate() + "\n" + "\t" + "Note: "  + super.getNote();
     }
     
 }

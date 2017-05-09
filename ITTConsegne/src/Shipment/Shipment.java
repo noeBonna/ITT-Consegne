@@ -10,6 +10,7 @@ import Delivery.Children.SucceededDelivery;
 import Delivery.Delivery;
 import Recipient.Recipient;
 import java.io.IOException;
+import java.time.LocalDate;
 import java.util.ArrayList;
 
 /**
@@ -23,11 +24,10 @@ public class Shipment {
     private float weight;
     private ArrayList<Delivery> delivery;
 
-    public Shipment(String tracking, Recipient recipient, float weight,ArrayList<Delivery> delivery) {
+    public Shipment(String tracking, Recipient recipient, float weight) {
         this.setTracking(tracking);
         this.setRecipient(recipient);
         this.setWeight(weight);
-        this.setDelivery(delivery);
     }
 
     public String getTracking() {
@@ -91,17 +91,19 @@ public class Shipment {
         else return false;
     }
     
-    public Delivery createSucceededDelivery(SucceededDelivery s){
-        if (s!=null){
+    public Delivery createSucceededDelivery(LocalDate date, String note, String sign){
+        if ((date!=null)&&(note!=null)&&(sign!=null)&&(!sign.isEmpty())){
+            SucceededDelivery s = new SucceededDelivery(date,note,sign);
             delivery.add(s);
             return delivery.get(delivery.size());
         }
         else return null;
     }
     
-    public Delivery createFailedDelivery(FailedDelivery s){
-        if (s!=null){
-            delivery.add(s);
+    public Delivery createFailedDelivery(LocalDate date, String note){
+        if ((date!=null)&&(note!=null)){
+            FailedDelivery f = new FailedDelivery(date,note);
+            delivery.add(f);
             return delivery.get(delivery.size());
         }
         else return null;

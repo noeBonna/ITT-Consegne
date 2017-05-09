@@ -27,22 +27,16 @@ public class ITTConsegne {
         Recipient r = new Recipient("Marco","Castelnovo di Sotto", "G.Pascoli", 42024);
         System.out.println(r.toString());
         //Delivery Creation 4 ArrayList
-        SucceededDelivery s = new SucceededDelivery(LocalDate.now(),"" , "NoèBonna",r);
-        SucceededDelivery p = new SucceededDelivery(LocalDate.now(),"" , "IlaPechi",r);
+      
         FailedDelivery f = new FailedDelivery(LocalDate.now(),"Consegna Fallita!" );
         FailedDelivery l = new FailedDelivery(LocalDate.now(),"Consegna Fallita!" );
         //ArrayList Creation Test Classes
         ArrayList<Delivery> consegne = new ArrayList<Delivery> ();
         consegne.add(f);
         consegne.add(l);
-        consegne.add(p);
-        consegne.add(s);
         
-        Shipment ship = new Shipment("Shipment 2891", r, 789,consegne);
-        System.out.println(ship.toString());
-        if (ship.isDelivery()){
-            System.out.println("The last Delivery has been sent without any issues");
-        }   else System.out.println("The last Delivery has had a problem ");
+        
+       
     }
     
 }
